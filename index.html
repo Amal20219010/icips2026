@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICIPS 2026 — International Conference on Informatics & Problem Solving</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #393a56;
+  background: #eff2ff;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+#masthead {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e4f0;
+  box-shadow: 0 1px 8px rgba(2,53,96,.07);
+}
+
+.nav-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 92px;
+  gap: 24px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.nav-logo-mark {
+  width: 44px;
+  height: 44px;
+  background: #023560;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  flex-shrink: 0;
+}
+
+.nav-brand-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #242a56;
+  line-height: 1.3;
+  max-width: 180px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-menu a {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2a395a;
+  padding: 6px 11px;
+  border-radius: 6px;
+  transition: background .15s, color .15s;
+  white-space: nowrap;
+}
+
+.nav-menu a:hover { background: #eff2ff; color: #1481b9; }
+.nav-menu a.active { background: #eff2ff; color: #1481b9; font-weight: 600; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  background: #023560;
+  padding: 64px 24px 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle grid overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,.04) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,.04) 40px);
+  pointer-events: none;
+}
+
+/* radial glow */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(20,129,185,.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* top-left corner: hybrid notice + indexing logos */
+.hero-topbar {
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-hybrid-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #b5d4f4;
+  letter-spacing: .2px;
+  white-space: nowrap;
+}
+
+.hero-hybrid-badge svg { width: 12px; height: 12px; fill: #85b7eb; flex-shrink: 0; }
+
+.hero-index-logos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-index-logo {
+  height: 34px;
+  display: block;
+  background: #ffffff;
+  border-radius: 7px;
+  padding: 6px 12px;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .hero-topbar { position: static; justify-content: center; margin-bottom: 20px; }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 24px;
+  padding: 6px 16px;
+  font-size: 12px;
+  color: #b5d4f4;
+  margin-bottom: 24px;
+  letter-spacing: .3px;
+}
+
+.hero-badge svg { width: 14px; height: 14px; fill: #85b7eb; flex-shrink: 0; }
+
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.hero h1 span { color: #85b7eb; }
+
+.hero-edition-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffcb47;
+  color: #023560;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  letter-spacing: .3px;
+}
+
+.hero-edition-badge svg { width: 13px; height: 13px; fill: #023560; flex-shrink: 0; }
+
+.hero-theme {
+  font-size: 15px;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 36px;
+  font-style: italic;
+}
+
+/* countdown */
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.cd-box {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 12px;
+  padding: 16px 20px;
+  min-width: 78px;
+  text-align: center;
+}
+
+.cd-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  display: block;
+}
+
+.cd-label {
+  font-size: 10px;
+  color: rgba(255,255,255,.45);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  display: block;
+}
+
+.cd-sep {
+  font-size: 28px;
+  color: rgba(255,255,255,.25);
+  font-weight: 300;
+  margin-bottom: 18px;
+}
+
+.hero-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: rgba(255,255,255,.45);
+  border-top: 1px solid rgba(255,255,255,.12);
+  padding-top: 22px;
+}
+
+.hero-location svg { width: 14px; height: 14px; fill: rgba(255,255,255,.4); }
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+.page-content {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 36px 24px 24px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* ---- Welcome card ---- */
+.welcome-card {
+  background: #ffffff;
+  border: 1px solid #e0e4f0;
+  border-radius: 16px;
+  padding: 36px 40px;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #1481b9;
+  margin-bottom: 8px;
+}
+
+.welcome-card h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #242a56;
+  margin-bottom: 12px;
+}
+
+.theme-tag {
+  display: inline-block;
+  background: #eff2ff;
+  color: #1481b9;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 24px;
+  border: 1px solid #c4d0f8;
+  margin-bottom: 24px;
+}
+
+.welcome-card p {
+  font-size: 15px;
+  color: #555870;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.welcome-card p:last-child { margin-bottom: 0; }
+
+.welcome-card strong { color: #242a56; font-weight: 600; }
+
+.welcome-divider {
+  border: none;
+  border-top: 1px solid #e8ecf8;
+  margin: 28px 0;
+}
+
+/* chairs section inside welcome */
+.chairs-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.chair-card {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f7f9ff;
+  border: 1px solid #e0e4f0;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.chair-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #023560;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.chair-info .chair-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #242a56;
+}
+
+.chair-info .chair-role {
+  font-size: 11px;
+  color: #8a8fa8;
+  margin-top: 2px;
+}
+
+/* ---- Sidebar ---- */
+.sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+.info-card {
+  background: #ffffff;
+  border: 1px solid #e0e4f0;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.info-card-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8a8fa8;
+  margin-bottom: 18px;
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.info-row:last-of-type { margin-bottom: 0; }
+
+.info-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #eff2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-icon svg { width: 16px; height: 16px; fill: #1481b9; }
+
+.info-text { flex: 1; }
+
+.info-label {
+  font-size: 11px;
+  color: #8a8fa8;
+  margin-bottom: 2px;
+}
+
+.info-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #242a56;
+  line-height: 1.4;
+}
+
+.chip-grid { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+
+.chip {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: #eff2ff;
+  border: 1px solid #c4d0f8;
+  color: #2a395a;
+}
+
+/* register button */
+.btn-register {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  background: #023560;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background .2s;
+  letter-spacing: .3px;
+}
+
+.btn-register:hover { background: #1481b9; }
+
+/* organiser block */
+.organiser-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid #e8ecf8;
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.organiser-block .org-logo {
+  width: 64px;
+  height: 64px;
+  padding: 6px;
+  box-shadow: 0 2px 6px rgba(2,53,96,.08);
+}
+
+.org-logo {
+  width: 42px;
+  height: 42px;
+  background: #ffffff;
+  border: 1px solid #e0e4f0;
+  border-radius: 8px;
+  object-fit: contain;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.nav-logo .org-logo {
+  width: auto;
+  height: 74px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.org-name { font-size: 14px; font-weight: 700; color: #242a56; }
+.org-sub { font-size: 11.5px; color: #8a8fa8; line-height: 1.4; }
+
+/* key dates card */
+.date-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f2fb;
+}
+
+.date-row:last-child { border-bottom: none; padding-bottom: 0; }
+.date-row:first-child { padding-top: 0; }
+
+.date-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1481b9;
+  flex-shrink: 0;
+  margin-left: 3px;
+}
+
+.date-dot.highlight { background: #023560; }
+
+.date-event { font-size: 13px; color: #555870; flex: 1; }
+.date-val { font-size: 12px; font-weight: 600; color: #242a56; white-space: nowrap; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: #023560;
+  color: rgba(255,255,255,.55);
+  text-align: center;
+  padding: 18px 24px;
+  font-size: 13px;
+}
+
+.site-footer a { color: rgba(255,255,255,.7); }
+.site-footer a:hover { color: #fff; }
+
+/* ============================================================
+   CONTENT SECTIONS (Submission / Awards / Registration / Dates /
+   Committees / Speakers / Program / Sponsor)
+   ============================================================ */
+.content-section {
+  scroll-margin-top: 92px; /* offsets the sticky header on anchor jump */
+}
+
+.section-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 8px 24px 44px;
+}
+
+/* two-column variant: main card + sidebar, side by side (same pattern as .page-content) */
+.section-wrap.has-sidebar {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 28px;
+  align-items: start;
+}
+
+.section-card {
+  background: #ffffff;
+  border: 1px solid #e0e4f0;
+  border-radius: 16px;
+  padding: 36px 40px;
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #242a56;
+  margin-bottom: 8px;
+}
+
+.section-sub {
+  font-size: 14px;
+  color: #8a8fa8;
+  margin-bottom: 26px;
+  line-height: 1.6;
+}
+
+.section-card p { font-size: 15px; color: #555870; line-height: 1.8; margin-bottom: 16px; }
+.section-card p:last-child { margin-bottom: 0; }
+
+/* generic 2/3-col card grid used by Committees / Speakers / Awards / Sponsor */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+
+.tile {
+  background: #f7f9ff;
+  border: 1px solid #e0e4f0;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.tile-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #023560;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.tile-avatar.tile-photo {
+  overflow: hidden;
+  padding: 0;
+}
+
+.tile-avatar.tile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tile-avatar.tile-photo-lg {
+  width: 112px;
+  height: 112px;
+}
+
+.tile-logo {
+  width: 130px;
+  height: 130px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e0e4f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  padding: 8px;
+}
+
+.tile-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.tile-name { font-size: 14px; font-weight: 600; color: #242a56; }
+.tile-role { font-size: 12px; color: #8a8fa8; margin-top: 3px; line-height: 1.5; }
+.tile-badge {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #1481b9;
+  background: #eff2ff;
+  border: 1px solid #c4d0f8;
+  border-radius: 20px;
+  padding: 3px 12px;
+}
+
+/* fee / program tables */
+.data-table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+.data-table th, .data-table td {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 13px;
+  border-bottom: 1px solid #eef1fb;
+}
+.data-table th {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  color: #8a8fa8;
+  font-weight: 600;
+  background: #f7f9ff;
+}
+.data-table td { color: #555870; }
+.data-table td strong { color: #242a56; }
+.data-table tr:last-child td { border-bottom: none; }
+
+.program-day {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #023560;
+  margin: 26px 0 10px;
+}
+.program-day:first-child { margin-top: 6px; }
+
+/* sponsor tiers */
+.tier-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+.tier-card {
+  border: 1px solid #e0e4f0;
+  border-radius: 12px;
+  padding: 22px 20px;
+  background: #f7f9ff;
+}
+.tier-card.tier-featured { background: #023560; border-color: #023560; }
+.tier-name { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #242a56; margin-bottom: 6px; }
+.tier-featured .tier-name, .tier-featured .tier-note, .tier-featured li { color: #ffffff; }
+.tier-card ul { margin: 12px 0 0 18px; }
+.tier-card li { font-size: 13px; color: #555870; margin-bottom: 6px; line-height: 1.5; }
+
+.cta-row { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-outline {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid #023560;
+  color: #023560;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background .2s, color .2s;
+}
+.btn-outline:hover { background: #023560; color: #fff; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 860px) {
+  .page-content,
+  .section-wrap.has-sidebar {
+    grid-template-columns: 1fr;
+  }
+  .sidebar { order: -1; }
+  .welcome-card { padding: 24px 20px; }
+  .nav-menu { display: none; }
+  .nav-brand-text { max-width: none; font-size: 13px; }
+  .nav-inner { min-height: 76px; }
+  .nav-logo .org-logo { height: 58px; }
+  .section-card { padding: 24px 20px; }
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+  .tier-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .data-table { font-size: 12px; }
+  .data-table th, .data-table td { padding: 9px 8px; }
+}
+
+@media (max-width: 480px) {
+  .cd-box { min-width: 60px; padding: 12px 14px; }
+  .cd-num { font-size: 24px; }
+  .countdown { gap: 6px; }
+  .cd-sep { font-size: 20px; }
+  .hero { padding: 44px 16px 36px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header id="masthead">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="https://icips2025.org/wp-content/uploads/2025/09/WhatsApp_Image_2025-09-11_at_10.37.32_AM-removebg-preview.png" alt="ACPC logo" class="org-logo">
+      <div class="nav-brand-text">International Conference on Informatics &amp; Problem Solving</div>
+    </div>
+    <nav class="nav-menu" aria-label="Primary navigation">
+      <a href="#about" class="active">About Us</a>
+      <a href="#speakers">Keynote Speakers</a>
+      <a href="#submission">Submission &amp; Important Dates</a>
+      <a href="#program">Program</a>
+      <a href="#registration">Registration</a>
+      <a href="#awards">Awards</a>
+      <a href="#committees">Committees</a>
+      <a href="#sponsor">Sponsor</a>
+      <a href="#venue">Venue</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" aria-label="Conference hero">
+
+  <div class="hero-topbar">
+    <span class="hero-hybrid-badge">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.93 9h-3.05c-.14-2.34-.85-4.5-1.94-6.26A8.02 8.02 0 0119.93 11zM12 4.06c1.29 1.62 2.29 3.98 2.47 6.94H9.53C9.71 8.04 10.71 5.68 12 4.06zM4.07 11a8.02 8.02 0 015.99-6.26C9.02 6.5 8.31 8.66 8.17 11H4.07zm0 2h4.1c.14 2.34.85 4.5 1.94 6.26A8.02 8.02 0 014.07 13zM12 19.94c-1.29-1.62-2.29-3.98-2.47-6.94h4.94c-.18 2.96-1.18 5.32-2.47 6.94zm2.99-.68c1.09-1.76 1.8-3.92 1.94-6.26h3.05a8.02 8.02 0 01-4.99 6.26z"/></svg>
+      Hybrid Conference · In-Person &amp; Online
+    </span>
+    <div class="hero-index-logos">
+      <img class="hero-index-logo" src="https://icips2025.org/wp-content/uploads/2025/10/WhatsApp_Image_2025-10-18_at_2.59.24_PM-removebg-preview.png" alt="Springer">
+      <img class="hero-index-logo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Scopus_logo.svg" alt="Scopus">
+    </div>
+  </div>
+
+  <div class="hero-inner">
+
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+      Affiliated with ACPC
+    </div>
+    
+    <h1>ICIPS <span>2026</span></h1>
+
+    <div class="hero-edition-badge">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+      2nd Edition
+    </div>
+
+    <p class="hero-theme">"Innovating Informatics Education for the Future"</p>
+    <div class="countdown" role="timer" aria-label="Countdown to conference">
+      <div class="cd-box">
+        <span class="cd-num" id="cd-d">--</span>
+        <span class="cd-label">Days</span>
+      </div>
+      <span class="cd-sep" aria-hidden="true">:</span>
+      <div class="cd-box">
+        <span class="cd-num" id="cd-h">--</span>
+        <span class="cd-label">Hours</span>
+      </div>
+      <span class="cd-sep" aria-hidden="true">:</span>
+      <div class="cd-box">
+        <span class="cd-num" id="cd-m">--</span>
+        <span class="cd-label">Minutes</span>
+      </div>
+      <span class="cd-sep" aria-hidden="true">:</span>
+      <div class="cd-box">
+        <span class="cd-num" id="cd-s">--</span>
+        <span class="cd-label">Seconds</span>
+      </div>
+    </div>
+
+    <div class="hero-location">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Luxor · Egypt · 10–12 December 2026
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE CONTENT
+     ============================================================ -->
+<main id="content">
+<main id="content">
+
+<section class="page-content content-section" id="about" aria-label="About Us">
+
+  <!-- Welcome card -->
+  <article class="welcome-card">
+    <p class="section-eyebrow">Welcome Message</p>
+    <h2>ICIPS 2026</h2>
+    <span class="theme-tag">2nd Edition</span>
+    
+    <p style="text-align:justify;">
+      Following the success of its first edition in 2025, the International
+      Conference on Informatics and Problem Solving (ICIPS 2026) returns for its
+      <strong>2nd edition</strong>. Affiliated with the Arab &amp; African Collegiate
+      Programming Contest (ACPC), it is designed to be a dynamic platform that brings
+      together a diverse community of educators, researchers, coaches, and students.
+      Its main purpose is to foster dialogue, collaboration, and the exchange of
+      innovative practices in the fields of informatics education, competitive
+      programming, and problem-solving methodologies. By creating an environment
+      where academic theory meets practical coaching strategies, the conference aims
+      to bridge the gap between classrooms, research labs, and programming arenas.
+    </p>
+
+    <p style="text-align:justify;">
+      The 2026 edition focuses on the theme
+      <strong>Innovating Informatics Education for the Future</strong>, highlighting
+      the urgent need to reimagine how informatics is taught and practiced in a rapidly
+      evolving digital era. Through keynote speeches, research presentations, workshops,
+      and panel discussions, ICIPS provides opportunities to explore modern pedagogical
+      tools, effective competition training techniques, and future directions for
+      integrating computational thinking into various educational contexts. By gathering
+      participants from different regions and backgrounds, the conference also reinforces
+      cultural and academic exchange, making it not only a scientific event but also a
+      hub for inspiring the next generation of problem solvers and innovators.
+    </p>
+
+    <p style="text-align:justify;">
+      ICIPS 2026, in collaboration with ACPC, warmly welcomes all participants to an
+      engaging environment where innovation in informatics education meets the spirit of
+      competition. With its focus on the theme "Innovating Informatics Education for the
+      Future", the conference invites educators, researchers, and students to share
+      knowledge, build networks, and inspire new approaches to teaching, problem solving,
+      and coaching in programming contests.
+    </p>
+
+    <hr class="welcome-divider">
+
+    <div class="chairs-row">
+      <div class="chair-card">
+        <div class="chair-avatar">YA</div>
+        <div class="chair-info">
+          <div class="chair-name">Prof. Yousry Al-Gamal</div>
+          <div class="chair-role">General Conference Chair · Arab Academy for Science, Technology and Maritime Transport</div>
+        </div>
+      </div>
+      <div class="chair-card">
+        <div class="chair-avatar">AA</div>
+        <div class="chair-info">
+          <div class="chair-name">Prof. Ashraf M.A. Ahmad</div>
+          <div class="chair-role">General Conference Chair · Princess Sumaya University for Technology</div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+  
+  <!-- Sidebar -->
+  <aside class="sidebar" aria-label="Conference information">
+
+    <!-- Details card -->
+    <div class="info-card">
+      <p class="info-card-title">Conference details</p>
+
+      <div class="info-row">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5zm2 4h10v2H7zm0 4h7v2H7z"/></svg>
+        </div>
+        <div class="info-text">
+          <div class="info-label">Dates</div>
+          <div class="info-value">10–12 December 2026</div>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div class="info-text">
+          <div class="info-label">Venue</div>
+          <div class="info-value">Jolie Ville Resort &amp; SPA Kings Island, Luxor, Egypt</div>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        </div>
+        <div class="info-text">
+          <div class="info-label">Audience</div>
+          <div class="info-value">Educators, researchers, students, coaches</div>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5S15.01 22 17.5 22s4.5-2.01 4.5-4.5S19.99 13 17.5 13zm0 7c-1.38 0-2.5-1.12-2.5-2.5S16.12 15 17.5 15s2.5 1.12 2.5 2.5S18.88 20 17.5 20zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"/></svg>
+        </div>
+        <div class="info-text">
+          <div class="info-label">Topics</div>
+          <div class="chip-grid">
+            <span class="chip">Informatics education</span>
+            <span class="chip">Problem-solving approaches</span>
+            <span class="chip">Teaching innovations</span>
+            <span class="chip">Collaborative learning</span>
+            <span class="chip">AI in education</span>
+            <span class="chip">Industry and Academia Collaboration</span>
+            <span class="chip">Case Studies and Best Practices</span>
+            <span class="chip">Artificial Intelligence in Education and Informatics</span>
+            <span class="chip">Applied Informatics and Interdisciplinary Innovations</span>
+            <span class="chip">Artificial Intelligence for Advanced Problem-Solving</span>
+            <span class="chip">Data Science &amp; Big Data Analytics</span>
+            <span class="chip">Business Informatics, Digital Transformation, &amp; FinTech</span>
+            <span class="chip">AI, Security, &amp; Competitive Problem Design</span>
+            <span class="chip">Leveraging LLMs &amp; Generative AI in Programming</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="organiser-block">
+        <img src="https://icips2025.org/wp-content/uploads/2025/09/WhatsApp_Image_2025-09-16_at_4.42.28_PM-removebg-preview.png" alt="ACPC logo" class="org-logo">
+        <div>
+          <div class="org-name">Affiliated with ACPC</div>
+          <div class="org-sub">Arab &amp; African Collegiate Programming Contest</div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+</section>
+<!-- /#about -->
+
+<!-- ============================================================
+     KEYNOTE SPEAKERS
+     ============================================================ -->
+<section class="section-wrap content-section" id="speakers" aria-label="Keynote Speakers">
+  <div class="section-card">
+    <p class="section-eyebrow">Featured Guests</p>
+    <h2 class="section-title">Keynote Speakers</h2>
+    <p class="section-sub">ICIPS 2026 welcomes the following confirmed keynote speakers.</p>
+
+    <div class="grid-3" style="margin-bottom: 30px;">
+      <div class="tile">
+        <div class="tile-avatar tile-photo tile-photo-lg"><img src="https://icips2025.org/wp-content/uploads/2025/09/YOUSRY.jpg" alt="H.E. Yousry S. Elgamal"></div>
+        <div class="tile-name">H.E. Yousry S. Elgamal</div>
+        <div class="tile-role">Former Minister of Education, Egypt · Arab Academy for Science, Technology &amp; Maritime Transport</div>
+      </div>
+      <div class="tile">
+        <div class="tile-avatar tile-photo tile-photo-lg"><img src="https://icips2025.org/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-20-at-9.39.28-AM-e1758354750211.jpeg" alt="Prof. Ashraf M. A. Ahmad"></div>
+        <div class="tile-name">Prof. Ashraf M. A. Ahmad</div>
+        <div class="tile-role">Princess Sumaya University for Technology</div>
+      </div>
+      <div class="tile">
+        <div class="tile-avatar tile-photo tile-photo-lg"><img src="https://icips2025.org/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-07-at-12.41.30-PM-1-e1759830354597.jpeg" alt="Waleed Khalil"></div>
+        <div class="tile-name">Waleed Khalil</div>
+        <div class="tile-role">Managing Partner, Den VC</div>
+      </div>
+      <div class="tile">
+        <div class="tile-avatar tile-photo tile-photo-lg"><img src="https://icips2025.org/wp-content/uploads/2025/10/Dr.-Faisal-N.-Abu-Khzam-.jpg" alt="Prof. Faisal N. Abu-Khzam"></div>
+        <div class="tile-name">Prof. Faisal N. Abu-Khzam</div>
+        <div class="tile-role">Lebanese American University</div>
+      </div>
+      <div class="tile">
+        <div class="tile-avatar tile-photo tile-photo-lg"><img src="https://icips2025.org/wp-content/uploads/2025/11/1516282810792.jpg" alt="Latif Ladid"></div>
+        <div class="tile-name">Latif Ladid</div>
+        <div class="tile-role">Founder &amp; President, IPv6 Forum</div>
+      </div>
+    </div>
+
+    <hr class="welcome-divider">
+
+    <h3 style="font-family:'Poppins', sans-serif; font-size:16px; color:#242a56; margin-bottom:10px;">H.E. Yousry S. Elgamal</h3>
+    <p style="text-align:justify;">Professor of Computer Engineering, senior advisor at the Arab Academy for Science and Technology, and Chairman of the Computer Scientific Society (CSS), Alexandria, Egypt. He served as Minister of Education of Egypt (2005–2010), Chairman of the Board of Trustees of the Egypt-Japan University of Science and Technology (E-JUST, 2010–2014), and senior consultant of the National Telecommunications Institute of Egypt. He is a member of the group of experts preparing the Global Knowledge Index and Chairman of the Information and Communication Committee at the National Committee of Education, Culture, and Science (UNESCO, ALECSO, ISESCO), and Editor-in-Chief of the <em>Advances in Computing and Engineering (ACE)</em> journal. He received his B.Sc. in Electrical Engineering from the University of Alexandria (1968), his M.Sc. from Ain Shams University (1977), and a D.Sc. in Computer Science from George Washington University (1985), and is a recipient of the Richard Merwin Award (1984).</p>
+
+    <h3 style="font-family:'Poppins', sans-serif; font-size:16px; color:#242a56; margin: 22px 0 10px;">Prof. Ashraf M. A. Ahmad</h3>
+    <p style="text-align:justify;">A distinguished academic and innovation leader in Artificial Intelligence, Cybersecurity, and Data Science, with over two decades of experience. He is a Professor of Computer Science at Princess Sumaya University for Technology (PSUT) in Jordan and plays a key role in shaping Jordan's digital transformation through national strategic committees, including the Central Bank of Jordan's Emerging Technologies Committee and initiatives of the Ministry of Digital Economy and Entrepreneurship (MODEE). His research spans explainable AI for finance, lightweight cryptography, and AI-driven content moderation. He is also the founder of the Jordan Collegiate Programming Contest (JCPC) and co-led the first Armython cybersecurity competition in the Middle East &amp; Africa.</p>
+
+    <h3 style="font-family:'Poppins', sans-serif; font-size:16px; color:#242a56; margin: 22px 0 10px;">Waleed Khalil</h3>
+    <p style="text-align:justify;">Managing Partner at Den VC and a prominent figure in engineering, entrepreneurship, and venture capital, with over two decades of experience across Taiwan, Hong Kong, and Egypt. In early 2023 he founded Den VC, an early-stage venture capital firm investing in deep tech startups across Africa and the Middle East. Previously a partner at Endure Capital (2016–2022), where he helped secure investments leading to four unicorns: Careem, Boom Supersonic, Tribal Credit, and Aspect Biosystems. He holds a bachelor's degree in electronics engineering from Cairo University and an MBA in finance from the American University in Cairo, where he serves as a Faculty Adjunct at the School of Business.</p>
+
+    <h3 style="font-family:'Poppins', sans-serif; font-size:16px; color:#242a56; margin: 22px 0 10px;">Prof. Faisal N. Abu-Khzam</h3>
+    <p style="text-align:justify;">Professor of Computer Science and Assistant Dean for Research Collaboration and Partnerships at the Lebanese American University (LAU), and director of LAU's online M.S. in Computer Science program and founding director of the Lebanese Collegiate Programming Contest (LCPC). He earned his Ph.D. in Computer Science from the University of Tennessee, Knoxville, and his M.S. in Mathematics and B.S. in Computer Science from the American University of Beirut. His research spans graph algorithms, combinatorics, artificial intelligence, and high-performance computing, including record-breaking kernelization bounds and fast exact and enumeration algorithms for classical graph problems.</p>
+
+    <h3 style="font-family:'Poppins', sans-serif; font-size:16px; color:#242a56; margin: 22px 0 10px;">Latif Ladid</h3>
+    <p style="text-align:justify;">Founder and President of the IPv6 Forum and a leading advocate for next-generation internet technologies. He is an Emeritus Trustee of the Internet Society (ISOC), leads the IPv6 Ready Logo and IPv6 Education programs, and is a Senior Researcher at the University of Luxembourg (SnT) and a board member in global standardization bodies including 3GPP. He is widely recognized as an international pioneer in IPv6 deployment, IoT, and future networks.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SUBMISSION
+     ============================================================ -->
+<section class="section-wrap has-sidebar content-section" id="submission" aria-label="Submission">
+  <div class="section-card">
+    <p class="section-eyebrow">Call for Papers</p>
+    <h2 class="section-title">Submission Guidelines</h2>
+    <p style="text-align:justify;" class="section-sub">Submissions are encouraged, but not limited to, topics spanning informatics education, problem solving, and competitive programming coaching.</p>
+
+    <p style="text-align:justify;">Authors are invited to submit original, previously unpublished research papers describing particular challenges or experiences, or proposing novel solutions relevant to the scope of the conference. Papers must present original and unpublished work and should not be currently under review by any other conference or journal. Papers should be written in English and formatted according to the <a href="http://www.springer.com/computer/lncs?SGWID=0-164-6-793341-0" target="_blank" rel="noopener" style="color:#1481b9; font-weight:600;">Springer LNCS</a> one-column page format, with a length of <strong>12–15 pages</strong>. For more detailed guidelines, please visit the official <a href="https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines" target="_blank" rel="noopener" style="color:#1481b9; font-weight:600;">Springer Guidelines</a> website.</p>
+
+    <p style="text-align:justify;">ICIPS 2026 accepts <strong>full research papers</strong> (original and unpublished research contributions), <strong>short papers</strong> (ongoing work or innovative ideas), and <strong>posters / demos</strong> (practical implementations, case studies, and prototypes). The proceedings of all accepted and presented papers are planned to be published by Springer in the <strong>Lecture Notes in Networks and Systems (LNNS)</strong> series (approval waiting), subject to Springer's quality checks, and submitted for consideration in Web of Science and indexes including SCOPUS, SCImago, INSPEC, WTI Frankfurt eG, the Norwegian Register for Scientific Journals and Series, and zbMATH.</p>
+
+    <p style="text-align:justify;">All submitted papers undergo double-blind peer review by at least two independent reviewers from the Program Committee, evaluated on originality, relevance, technical quality, clarity of presentation, and contribution to the field. Submissions are also checked for plagiarism, with reports required to stay below 15%.</p>
+
+    <p style="text-align:justify;"><b>The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.</b></p>
+
+
+    <p style="margin-bottom: 8px;"><strong>Templates &amp; forms:</strong></p>
+    <div class="chip-grid" style="margin-bottom: 22px;">
+      <a href="https://icips2025.org/wp-content/uploads/2025/10/springer_word_template-3.docx" target="_blank" rel="noopener" class="chip" style="text-decoration:none;">MS Word Template</a>
+      <a href="https://www.overleaf.com/latex/templates/springer-lecture-notes-in-computer-science/kzwwpvhwnvfj" target="_blank" rel="noopener" class="chip" style="text-decoration:none;">Overleaf LaTeX Template</a>
+      <a href="https://icips2025.org/wp-content/uploads/2025/11/ICIPS_copyright-2.docx" target="_blank" rel="noopener" class="chip" style="text-decoration:none;">Copyright Form</a>
+    </div>
+
+    <p style="font-size:13px; color:#8a8fa8; margin-bottom:22px;">For any issues related to the submission process, please contact us: <a href="mailto:submission@icips2025.org" style="color:#1481b9; font-weight:600;">submission@icips2025.org</a></p>
+
+    <div class="cta-row">
+      <a href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FICIPS2025" target="_blank" rel="noopener" class="btn-register" style="width:auto; margin-top:0;">Submit a paper →</a>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" aria-label="Key dates">
+    <!-- Key dates card -->
+    <div class="info-card">
+      <p class="info-card-title">Key dates</p>
+
+      <div class="date-row">
+        <div class="date-dot"></div>
+        <div class="date-event">Paper submission deadline</div>
+        <div class="date-val">1 Nov 2026</div>
+      </div>
+      <div class="date-row">
+        <div class="date-dot"></div>
+        <div class="date-event">Notification of acceptance</div>
+        <div class="date-val">25 Nov 2026</div>
+      </div>
+      <div class="date-row">
+        <div class="date-dot"></div>
+        <div class="date-event">Camera-ready submission</div>
+        <div class="date-val">1 Dec 2026</div>
+      </div>
+      <div class="date-row">
+        <div class="date-dot"></div>
+        <div class="date-event">Registration deadline</div>
+        <div class="date-val">5 Dec 2026</div>
+      </div>
+      <div class="date-row">
+        <div class="date-dot highlight"></div>
+        <div class="date-event"><strong>Conference</strong></div>
+        <div class="date-val"><strong>10–12 Dec 2026</strong></div>
+      </div>
+    </div>
+  </aside>
+
+</section>
+
+<!-- ============================================================
+     PROGRAM
+     ============================================================ -->
+<section class="section-wrap content-section" id="program" aria-label="Program">
+  <div class="section-card">
+    <p class="section-eyebrow">Schedule</p>
+    <h2 class="section-title">Conference Program</h2>
+    <p class="section-sub">The full ICIPS 2026 program will be published here as a downloadable PDF closer to the event.</p>
+
+    <div class="cta-row">
+      <a href="https://icips2025.org/wp-content/uploads/2025/12/program-1.pdf" target="_blank" rel="noopener" class="btn-register" style="width:auto; margin-top:0;">Download the program PDF →</a>
+    </div>
+
+    <p style="margin-top:22px;">Online participants can join Day 2 sessions via Zoom: <a href="https://psut-edu-jo.zoom.us/j/95428946950" target="_blank" rel="noopener" style="color:#1481b9; font-weight:600;">https://psut-edu-jo.zoom.us/j/95428946950</a></p>
+  </div>
+</section>
+
+<!-- ============================================================
+     REGISTRATION
+     ============================================================ -->
+<section class="section-wrap content-section" id="registration" aria-label="Registration">
+  <div class="section-card">
+    <p class="section-eyebrow">Attend ICIPS 2026</p>
+    <h2 class="section-title">Registration &amp; Fees</h2>
+    <p style="text-align:justify;" class="section-sub">Two registration types are offered: in-person attendance at the venue, or online attendance via a Google Meet link.</p>
+
+    <p style="text-align:justify;"><strong>In-Person Registration</strong> is for attendees who plan to physically attend the conference at the designated venue — networking with fellow researchers, engaging in interactive discussions, and experiencing the atmosphere of the event. <strong>Online Registration</strong> is for authors unable to attend in person: via a Google Meet link, you can join the conference virtually, participate in sessions, and present your research remotely.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>In-person</th>
+          <th>Online</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>ACPC participants</strong><br><span style="font-size:12px; color:#8a8fa8;">Coaches, contestants, guests, volunteers, students</span></td><td>$200</td><td>$200</td></tr>
+        <tr><td><strong>Regular author</strong></td><td>$400</td><td>$300</td></tr>
+        <tr><td><strong>Extra page charges</strong></td><td>$50</td><td>$50</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:13px; color:#8a8fa8; margin-top:16px;">
+      <strong>Notes:</strong> One regular registration covers a maximum of 2 papers — additional papers require additional registrations (e.g. regular authors with 3 papers need 2 registrations, with 5 papers need 4 registrations, etc.). Student registration covers only one paper. Registration by at least one author is mandatory to present a paper and include it in the conference proceedings; each presenting author may register and present up to two papers, with independent registration required for any paper beyond that.
+    </p>
+
+    <p style="margin-top:18px;"><strong>What your registration includes:</strong> access to the ACPC 2026 contest &amp; final ceremony, conference proceedings publication, and a conference bag &amp; cup.</p>
+
+    <p style="font-size:13px; color:#8a8fa8;">Send your registration receipt along with your paper ID and attendance mode (in-person or online) to <a href="mailto:abdel1a@cmich.edu" style="color:#1481b9; font-weight:600;">abdel1a@cmich.edu</a>.</p>
+
+    <p style="margin-top:8px; margin-bottom:8px;"><strong>Payment links:</strong></p>
+    <div class="chip-grid" style="margin-bottom: 22px;">
+      <a href="https://square.link/u/ZjBYnxyA" target="_blank" rel="noopener" class="chip" style="text-decoration:none;">ACPC participant (in-person / online)</a>
+      <a href="https://square.link/u/ph2VwdO0" target="_blank" rel="noopener" class="chip" style="text-decoration:none;">Regular author (in-person)</a>
+      <a href="https://square.link/u/rco625DM" target="_blank" rel="noopener" class="chip" style="text-decoration:none;">Regular author (online)</a>
+      <a href="https://square.link/u/cw7TUmlE" target="_blank" rel="noopener" class="chip" style="text-decoration:none;">Extra page</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AWARDS
+     ============================================================ -->
+<section class="section-wrap content-section" id="awards" aria-label="Awards">
+  <div class="section-card">
+    <p class="section-eyebrow">Recognition</p>
+    <h2 class="section-title">Conference Awards</h2>
+
+    <div class="grid-3">
+      <div class="tile">
+        <div class="tile-avatar">🏆</div>
+        <div class="tile-name">Best Paper Award</div>
+        <div class="tile-role">Recognition for the best research paper.</div>
+      </div>
+      <div class="tile">
+        <div class="tile-avatar">📄</div>
+        <div class="tile-name">Best Short Paper Award</div>
+        <div class="tile-role">Recognition for the best short paper.</div>
+      </div>
+      <div class="tile">
+        <div class="tile-avatar">🖼️</div>
+        <div class="tile-name">Best Poster Award</div>
+        <div class="tile-role">Recognition for the best poster.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMMITTEES
+     ============================================================ -->
+<section class="section-wrap content-section" id="committees" aria-label="Committees">
+  <div class="section-card">
+    <p class="section-eyebrow">Organization</p>
+    <h2 class="section-title">Committees</h2>
+    <p class="section-sub">ICIPS 2026 is organized and reviewed by a committee of educators and researchers from across the region.</p>
+
+    <p class="section-eyebrow" style="margin-bottom:14px;">General Conference Chairs</p>
+    <div class="chairs-row" style="margin-bottom: 26px;">
+      <div class="chair-card">
+        <div class="chair-avatar">YA</div>
+        <div class="chair-info">
+          <div class="chair-name">His Excellency Prof. Yousry Al-Gamal</div>
+          <div class="chair-role">Arab Academy for Science, Technology and Maritime Transport</div>
+        </div>
+      </div>
+      <div class="chair-card">
+        <div class="chair-avatar">AA</div>
+        <div class="chair-info">
+          <div class="chair-name">Prof. Ashraf M.A. Ahmad</div>
+          <div class="chair-role">Princess Sumaya University for Technology</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-eyebrow" style="margin-bottom:14px;">Organizing Committee</p>
+    <div class="grid-3" style="margin-bottom: 26px;">
+      <div class="tile"><div class="tile-avatar">MA</div><div class="tile-name">Dr. Mousa Alrefayah</div><div class="tile-role">Head · Palestine Polytechnic University</div></div>
+      <div class="tile"><div class="tile-avatar">AK</div><div class="tile-name">Prof. Anas Abou El Kalam</div><div class="tile-role">Cadi Ayyad University, Morocco</div></div>
+      <div class="tile"><div class="tile-avatar">JA</div><div class="tile-name">Prof. Jafar Alkheir</div><div class="tile-role">Tishreen University</div></div>
+    </div>
+
+    <p class="section-eyebrow" style="margin-bottom:14px;">Program Committee</p>
+    <div class="grid-3" style="margin-bottom: 26px;">
+      <div class="tile"><div class="tile-avatar">WS</div><div class="tile-name">Prof. Waleed Salameh</div><div class="tile-role">Princess Sumaya University for Technology</div></div>
+      <div class="tile"><div class="tile-avatar">MH</div><div class="tile-name">Prof. Mohammad Hejjawi</div><div class="tile-role">Applied Science Private University</div></div>
+    </div>
+
+    <p class="section-eyebrow" style="margin-bottom:14px;">Steering / Advisory Committee</p>
+    <div class="grid-3" style="margin-bottom: 26px;">
+      <div class="tile"><div class="tile-avatar">OI</div><div class="tile-name">Prof. Osama Ismail</div><div class="tile-role">Head · Arab Academy for Science, Technology &amp; Maritime Transport</div></div>
+      <div class="tile"><div class="tile-avatar">AG</div><div class="tile-name">Prof. Ahmad Abdel Gawad</div><div class="tile-role">Central Michigan University</div></div>
+      <div class="tile"><div class="tile-avatar">FA</div><div class="tile-name">Prof. Faisal N. Abu-Khzam</div><div class="tile-role">Lebanese American University</div></div>
+    </div>
+
+    <p class="section-eyebrow" style="margin-bottom:14px;">Publicity &amp; Media</p>
+    <div class="grid-3" style="margin-bottom: 26px;">
+      <div class="tile"><div class="tile-avatar">AM</div><div class="tile-name">Mr. Anas Mohtaseb</div><div class="tile-role">Publicity &amp; Media</div></div>
+    </div>
+
+    <p class="section-eyebrow" style="margin-bottom:14px;">Scientific Committee</p>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 4px 24px;">
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Prof. Mohammad Hejjawi</div><div class="date-val">Applied Science Private University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Prof. Mustafa Alffyoumi</div><div class="date-val">Princess Sumaya University for Technology</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Prof. Salam Fraihat</div><div class="date-val">Ajman University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Mousa Al Akhrass</div><div class="date-val">Jordan University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Sufyan Almajali</div><div class="date-val">Princess Sumaya University for Technology</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Mohammad Khalil</div><div class="date-val">Palestine Technical University – Kadoorie</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Zein Salah</div><div class="date-val">Palestine Polytechnic University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Yousef Salah</div><div class="date-val">Palestine Polytechnic University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Mohammad Husein</div><div class="date-val">Birzeit University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Amjad Hussaini</div><div class="date-val">Hebron University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Rawan Jadoun</div><div class="date-val">Bethlehem University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Abdullah Rashed</div><div class="date-val">Al Najah National University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Mohannad Al Jabari</div><div class="date-val">Hebron University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Hani Salah</div><div class="date-val">Palestine Polytechnic University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Saffa Naser Aldeen</div><div class="date-val">Al-Quds University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Issam Ishaq</div><div class="date-val">Al-Quds University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Mohammad Ebeid</div><div class="date-val">Arab American University Palestine</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Ahmad Ewees</div><div class="date-val">Arab American University Palestine</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Moath Sabha</div><div class="date-val">Arab American University Palestine</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Mohammed AlBadawi</div><div class="date-val">Code Academy, Oman</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Sultan AlYahyai</div><div class="date-val">Code Academy, Oman</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Qasem Abu Alhaija</div><div class="date-val">Jordan University of Science and Technology</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Mohamed Abed Alrahamneh</div><div class="date-val">Princess Sumaya University for Technology</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Dorsaf Benna Chelly</div><div class="date-val">Chair, National Academy of Competitive Programming, Tunisia</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Ubai Sandouk</div><div class="date-val">Damascus University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Prof. Mouthana El-Koubailie</div><div class="date-val">Manara University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Bashar Ahmad</div><div class="date-val">Johannes Kepler University Austria</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Mohamed Basem Sabaneh</div><div class="date-val">Palmear Co.</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Mohammed Aldasht</div><div class="date-val">Palestine Polytechnic University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Mr. Anup Kagalkar</div><div class="date-val">AI and Pension System Researcher</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Mona Nasr</div><div class="date-val">Faculty of Computers and AI, Helwan University</div></div>
+      <div class="date-row"><div class="date-dot"></div><div class="date-event">Dr. Amit Kumar Bindal</div><div class="date-val">Maharishi Markandeshwar (Deemed to be University), India</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SPONSOR
+     ============================================================ -->
+<section class="section-wrap content-section" id="sponsor" aria-label="Sponsor">
+  <div class="section-card">
+    <p class="section-eyebrow">Partnership</p>
+    <h2 class="section-title">Sponsors</h2>
+    <p class="section-sub">ICIPS 2026 is affiliated with the Arab &amp; African Collegiate Programming Contest (ACPC) and supported by the following institutions.</p>
+
+    <div class="grid-3">
+      <div class="tile">
+        <div class="tile-logo"><img src="https://icips2025.org/wp-content/uploads/2025/10/f.png" alt="Central Michigan University logo"></div>
+        <div class="tile-name">Central Michigan University</div>
+        <div class="tile-role">Sponsor</div>
+      </div>
+      <div class="tile">
+        <div class="tile-logo"><img src="https://icips2025.org/wp-content/uploads/2025/10/ppu-.png" alt="Palestine Polytechnic University logo"></div>
+        <div class="tile-name">Palestine Polytechnic University</div>
+        <div class="tile-role">Sponsor</div>
+      </div>
+      <div class="tile">
+        <div class="tile-logo"><img src="https://icips2025.org/wp-content/uploads/2025/10/Untitقd-4.png" alt="IEEE Northeast Michigan Section logo"></div>
+        <div class="tile-name">IEEE Northeast Michigan Section</div>
+        <div class="tile-role">Technical Sponsor</div>
+      </div>
+      <div class="tile">
+        <div class="tile-logo"><img src="https://icips2025.org/wp-content/uploads/2025/10/WhatsApp_Image_2025-10-18_at_1.33.53_PM-removebg-preview.png" alt="ASU logo"></div>
+        <div class="tile-name">Applied Science University</div>
+        <div class="tile-role">Sponsor</div>
+      </div>
+      <div class="tile">
+        <div class="tile-logo"><img src="https://icips2025.org/wp-content/uploads/2025/09/WhatsApp_Image_2025-09-16_at_4.42.28_PM-removebg-preview.png" alt="ACPC logo"></div>
+        <div class="tile-name">ACPC</div>
+        <div class="tile-role">Sponsor</div>
+      </div>
+      <div class="tile">
+        <div class="tile-logo"><img src="https://icips2025.org/wp-content/uploads/2025/11/WhatsApp_Image_2025-11-10_at_12.33.42_PM-removebg-preview.png" alt="Central Michigan University logo"></div>
+        <div class="tile-name">Central Michigan University</div>
+        <div class="tile-role">Technical Sponsor</div>
+      </div>
+      <div class="tile">
+        <div class="tile-logo"><img src="https://icips2025.org/wp-content/uploads/2025/12/277761856_646649849954485_2202348675163834775_n-e1765027726190.jpg" alt="Jordanian Programmers Association logo"></div>
+        <div class="tile-name">Jordanian Programmers Association</div>
+        <div class="tile-role">Technical Sponsor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap content-section" id="venue" aria-label="Venue and Accommodation">
+  <div class="section-card">
+    <p class="section-eyebrow">Location</p>
+    <h2 class="section-title">Venue &amp; Accommodation</h2>
+    <p class="section-sub">An oasis of beauty and serenity on the Island of Kings, Luxor.</p>
+
+    <div style="margin: 20px 0; text-align: center;">
+          <img
+            src="https://icips2025.org/wp-content/uploads/2025/10/189157214.jpg"
+            alt="Jolie Ville Resort & Spa Kings Island Luxor"
+            style="
+            width:100%;
+            max-height:350px;
+            object-fit:cover;
+            border-radius:10px;
+            margin-bottom:15px;
+            "
+          >
+    </div>
+
+    <p>The conference venue is surrounded by 150 acres of spacious gardens and an expansive landscape overlooking the banks of the Nile River. This five-star deluxe property offers 531 spacious rooms &amp; suites with terrace views of lush palm-fringed gardens, distributed within 32 bungalows plus three Royal villas. All rooms and suites are air-conditioned, with satellite TV and tea/coffee-making facilities.</p>
+
+    <div class="chairs-row" style="margin: 20px 0;">
+      <div class="chair-card" style="flex:none; width:100%;">
+        <div class="chair-avatar">JV</div>
+        <div class="chair-info">
+          <div class="chair-name">Jolie Ville Resort &amp; SPA Kings Island Luxor</div>
+          <div class="chair-role">Official hotel of ICIPS 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <p>We highly recommend that conference participants stay at the Jolie Ville Resort &amp; SPA Kings Island Luxor, the official hotel of the conference. The resort offers exceptional comfort, modern facilities, and a relaxing atmosphere on the private island of Kings Island in Luxor. Staying at the official hotel ensures convenient access to conference sessions and excellent opportunities for networking and informal discussions with other participants.</p>
+  </div>
+</section>
+
+</main></main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <p>© 2026 ICIPS — International Conference on Informatics &amp; Problem Solving. Affiliated with ACPC. All rights reserved.</p>
+</footer>
+
+<!-- ============================================================
+     COUNTDOWN SCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  var target = new Date('Dec 10 2026 00:00:00');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    var now  = new Date();
+    var diff = target - now;
+    if (diff <= 0) {
+      ['cd-d','cd-h','cd-m','cd-s'].forEach(function(id){ document.getElementById(id).textContent = '00'; });
+      return;
+    }
+    var d = Math.floor(diff / 864e5);
+    var h = Math.floor((diff % 864e5) / 36e5);
+    var m = Math.floor((diff % 36e5) / 6e4);
+    var s = Math.floor((diff % 6e4) / 1e3);
+    document.getElementById('cd-d').textContent = pad(d);
+    document.getElementById('cd-h').textContent = pad(h);
+    document.getElementById('cd-m').textContent = pad(m);
+    document.getElementById('cd-s').textContent = pad(s);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+<!-- ============================================================
+     NAV SCROLLSPY + SMOOTH-SCROLL SCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-menu a[href^="#"]'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.content-section[id]'));
+  var header = document.getElementById('masthead');
+
+  if (!navLinks.length || !sections.length) return;
+
+  var linkById = {};
+  navLinks.forEach(function (a) {
+    linkById[a.getAttribute('href').slice(1)] = a;
+  });
+
+  function setActiveLink(id) {
+    navLinks.forEach(function (a) { a.classList.remove('active'); });
+    if (linkById[id]) linkById[id].classList.add('active');
+  }
+
+  /* --- Click a tab: smooth-scroll to its section --- */
+  navLinks.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActiveLink(id);
+      history.replaceState(null, '', '#' + id);
+    });
+  });
+
+  /* --- Scroll: highlight whichever tab's section is in view --- */
+  var headerHeight = header ? header.offsetHeight : 72;
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        setActiveLink(entry.target.id);
+      }
+    });
+  }, {
+    root: null,
+    // Treat a section as "active" once it clears the sticky header and
+    // is still within the upper 60% of the viewport.
+    rootMargin: '-' + (headerHeight + 12) + 'px 0px -60% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(function (sec) { observer.observe(sec); });
+
+  /* --- If the page loads with a hash, sync the active tab --- */
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    if (linkById[initialId]) setActiveLink(initialId);
+  }
+})();
+</script>
+
+</body>
+</html>
