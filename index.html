@@ -761,7 +761,99 @@ a { text-decoration: none; color: inherit; }
   transition: background .2s, color .2s;
 }
 .btn-outline:hover { background: #023560; color: #fff; }
+/* ============================================================
+   GALLERY (previous edition)
+   ============================================================ */
+.about-main { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
 
+.gallery-card {
+  background: #ffffff;
+  border: 1px solid #e0e4f0;
+  border-radius: 16px;
+  padding: 28px 32px 22px;
+}
+
+.gallery-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #242a56;
+  margin-bottom: 18px;
+}
+
+.gallery { position: relative; border-radius: 12px; overflow: hidden; background: #023560; }
+
+.gallery-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.gallery-track::-webkit-scrollbar { display: none; }
+
+.gallery-slide {
+  position: relative;
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  aspect-ratio: 16 / 9;
+  max-height: 420px;
+  margin: 0;
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-slide figcaption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 28px 18px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(2,53,96,.85));
+}
+
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,.9);
+  color: #023560;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(2,53,96,.25);
+  transition: background .2s, color .2s;
+}
+.gallery-btn:hover { background: #023560; color: #fff; }
+.gallery-btn.prev { left: 12px; }
+.gallery-btn.next { right: 12px; }
+
+.gallery-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+.gallery-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: #c4d0f8;
+  cursor: pointer;
+  padding: 0;
+  transition: background .2s, transform .2s;
+}
+.gallery-dot.active { background: #023560; transform: scale(1.25); }
+
+@media (max-width: 860px) {
+  .gallery-card { padding: 22px 20px 18px; }
+  .gallery-btn { width: 34px; height: 34px; }
+}
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -890,7 +982,7 @@ a { text-decoration: none; color: inherit; }
 <main id="content">
 
 <section class="page-content content-section" id="about" aria-label="About Us">
-
+ <div class="about-main">
   <!-- Welcome card -->
   <article class="welcome-card">
     <p class="section-eyebrow">Welcome Message</p>
@@ -952,8 +1044,37 @@ a { text-decoration: none; color: inherit; }
     </div>
   </article>
 
+  <!-- Photo gallery: ICIPS 2025 -->
+  <section class="gallery-card" aria-label="ICIPS 2025 photo gallery">
+    <p class="section-eyebrow">Previous Edition</p>
+    <h2 class="gallery-title">ICIPS 2025 Highlights</h2>
 
-  
+    <div class="gallery" id="gallery">
+      <div class="gallery-track" id="galleryTrack">
+        <figure class="gallery-slide">
+          <img src="https://raw.githubusercontent.com/Amal20219010/icips2026/refs/heads/main/ICIPS2026/gallery/photo1.jpg" alt="ICIPS 2025 opening session" loading="lazy">
+          <figcaption>Opening session</figcaption>
+        </figure>
+        <figure class="gallery-slide">
+          <img src="https://raw.githubusercontent.com/Amal20219010/icips2026/refs/heads/main/ICIPS2026/gallery/photo2.jpg" alt="ICIPS 2025 keynote" loading="lazy">
+          <figcaption>Keynote talk</figcaption>
+        </figure>
+        <figure class="gallery-slide">
+          <img src="https://raw.githubusercontent.com/Amal20219010/icips2026/refs/heads/main/ICIPS2026/gallery/photo3.jpg" alt="ICIPS 2025 paper presentations" loading="lazy">
+          <figcaption>Paper presentations</figcaption>
+        </figure>
+      </div>
+
+      <button class="gallery-btn prev" id="galleryPrev" aria-label="Previous photo">&#10094;</button>
+      <button class="gallery-btn next" id="galleryNext" aria-label="Next photo">&#10095;</button>
+    </div>
+
+    <div class="gallery-dots" id="galleryDots"></div>
+  </section>
+
+</div>
+
+  </div>  
   <!-- Sidebar -->
   <aside class="sidebar" aria-label="Conference information">
 
@@ -1540,6 +1661,52 @@ a { text-decoration: none; color: inherit; }
   }
 })();
 </script>
+<script>
+(function () {
+  const track = document.getElementById('galleryTrack');
+  if (!track) return;
+  const slides = track.querySelectorAll('.gallery-slide');
+  const dotsWrap = document.getElementById('galleryDots');
+  let index = 0, timer;
 
+  // build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  });
+  const dots = dotsWrap.querySelectorAll('.gallery-dot');
+
+  function goTo(i) {
+    index = (i + slides.length) % slides.length;
+    track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' });
+  }
+
+  // keep dots in sync (also works with swipe on touch screens)
+  track.addEventListener('scroll', () => {
+    const i = Math.round(track.scrollLeft / track.clientWidth);
+    if (i !== index) {
+      index = i;
+      dots.forEach((d, k) => d.classList.toggle('active', k === i));
+    } else {
+      dots.forEach((d, k) => d.classList.toggle('active', k === index));
+    }
+  });
+
+  document.getElementById('galleryPrev').addEventListener('click', () => goTo(index - 1));
+  document.getElementById('galleryNext').addEventListener('click', () => goTo(index + 1));
+
+  // autoplay, paused on hover/touch
+  function start() { timer = setInterval(() => goTo(index + 1), 4500); }
+  function stop()  { clearInterval(timer); }
+  const g = document.getElementById('gallery');
+  g.addEventListener('mouseenter', stop);
+  g.addEventListener('mouseleave', start);
+  g.addEventListener('touchstart', stop, { passive: true });
+  start();
+})();
+</script>
 </body>
 </html>
